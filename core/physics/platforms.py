@@ -123,7 +123,7 @@ class AdvancedPlatformSystem:
     def __init__(self):
         self.platforms = []
         self.breakable_platforms = set()
-    
+
     # -------------------------------------------------------------
     # Agregar plataforma normal y devolver referencia
     def add_platform(self, x, y, width, height, platform_type="normal"):
@@ -203,3 +203,6 @@ class AdvancedPlatformSystem:
             platform.draw(screen)
 #endregion
 # ================================================================
+
+
+

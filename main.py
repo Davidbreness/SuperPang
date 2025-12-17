@@ -6,7 +6,7 @@
 import pygame
 from config import ANCHO, ALTO, FPS
 from core.level.level1 import Level1
-# from core.level.level2 import Level2  # Descomentar cuando lo crees
+from core.level.level2 import Level2
 # from core.level.level3 import Level3  # Descomentar cuando lo crees
 from ui.menu import Menu
 
@@ -64,34 +64,47 @@ def main():
         if estado == "menu":
             # Manejar input del menú
             accion = menu.handle_input(eventos)
-            
+
             # Procesar selección del usuario
             if accion == "level_1":
-                print("🎮 Cargando Level 1...")
+                print(" Cargando Level 1...")
                 try:
                     # Detener música del menú
                     menu.stop_menu_music()
-                    
+
                     nivel_actual = Level1(pantalla, ANCHO, ALTO)
                     nivel_actual.load_assets()
                     nivel_actual.spawn_initial_entities()
                     estado = "jugando"
-                    
+
                     # Aplicar configuración de volumen
                     pygame.mixer.music.set_volume(menu.music_volume)
                 except Exception as e:
                     print(f" Error cargando Level 1: {e}")
-                
+
             elif accion == "level_2":
-                print("  Level 2 no implementado aún")
-                
+                print("🎮 Cargando Level 2...")
+                try:
+                    # Detener música del menú
+                    menu.stop_menu_music()
+
+                    nivel_actual = Level2(pantalla, ANCHO, ALTO)
+                    nivel_actual.load_assets()
+                    nivel_actual.spawn_initial_entities()
+                    estado = "jugando"
+
+                    # Aplicar configuración de volumen
+                    pygame.mixer.music.set_volume(menu.music_volume)
+                except Exception as e:
+                    print(f" Error cargando Level 2: {e}")
+
             elif accion == "level_3":
                 print("  Level 3 no implementado aún")
-                
+
             elif accion == "exit":
                 print(" Saliendo del juego...")
                 corriendo = False
-            
+
             # Dibujar menú
             menu.draw(pantalla)
             pygame.display.flip()
